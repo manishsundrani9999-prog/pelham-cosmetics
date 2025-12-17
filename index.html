@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelham - Premium Cosmetics & Perfume Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        .perfume-highlight {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            border-radius: 20px;
+        }
+        
+        .perfume-highlight h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .perfume-highlight p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .perfume-ranges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .range-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .range-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .range-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .range-card h3 {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .range-price {
+            font-size: 1.3rem;
+            color: #f5576c;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .range-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .about {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PELHAM</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#perfumes">Perfumes</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+        <h1>Welcome to Pelham</h1>
+        <p>Your Premium Destination for Luxury Cosmetics & Exquisite Perfumes</p>
+        <a href="#perfumes" class="cta-button">Explore Fragrances</a>
+    </section>
+    
+    <section id="perfumes" class="container">
+        <div class="perfume-highlight">
+            <h2>🌸 Perfume Specialists 🌸</h2>
+            <p>From everyday elegance to luxury indulgence, we offer an exceptional range of perfumes for every budget and occasion. Discover your signature scent with our expertly curated collection.</p>
+        </div>
+        
+        <h2 class="section-title">Our Perfume Collection</h2>
+        <p class="section-subtitle">Quality fragrances for every budget - from affordable daily wear to premium luxury</p>
+        
+        <div class="perfume-ranges">
+            <div class="range-card">
+                <div class="range-icon">🌼</div>
+                <h3>Budget Range</h3>
+                <div class="range-price">$15 - $35</div>
+                <p>Fresh, everyday fragrances perfect for daily wear. Quality scents that won't break the bank. Ideal for students, professionals, and anyone seeking affordable elegance.</p>
+            </div>
+            
+            <div class="range-card">
+                <div class="range-icon">🌹</div>
+                <h3>Mid Range</h3>
+                <div class="range-price">$40 - $80</div>
+                <p>Designer-inspired fragrances with lasting power and sophisticated notes. Perfect for special occasions and professional settings. Our most popular category.</p>
+            </div>
+            
+            <div class="range-card">
+                <div class="range-icon">💎</div>
+                <h3>Premium Range</h3>
+                <div class="range-price">$85 - $200+</div>
+                <p>Luxury perfumes from world-renowned brands. Exclusive, long-lasting fragrances with complex notes. For those who demand the finest in perfumery.</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Featured Fragrances</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">🌸</div>
+                <div class="product-info">
+                    <h3>Fresh Bloom</h3>
+                    <p>Light floral notes perfect for everyday wear</p>
+                    <div class="price">$24.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🍊</div>
+                <div class="product-info">
+                    <h3>Citrus Breeze</h3>
+                    <p>Energizing citrus blend with woody undertones</p>
+                    <div class="price">$29.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🌹</div>
+                <div class="product-info">
+                    <h3>Rose Elegance</h3>
+                    <p>Sophisticated rose with hints of vanilla</p>
+                    <div class="price">$59.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🌙</div>
+                <div class="product-info">
+                    <h3>Midnight Oud</h3>
+                    <p>Rich, mysterious oriental fragrance</p>
+                    <div class="price">$79.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">💎</div>
+                <div class="product-info">
+                    <h3>Diamond Luxe</h3>
+                    <p>Premium luxury scent with amber and musk</p>
+                    <div class="price">$149.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">👑</div>
+                <div class="product-info">
+                    <h3>Royal Collection</h3>
+                    <p>Exclusive designer fragrance set</p>
+                    <div class="price">$199.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="products" class="container" style="padding-top: 0;">
+        <h2 class="section-title">Cosmetics Collection</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">💄</div>
+                <div class="product-info">
+                    <h3>Luxury Lipstick</h3>
+                    <p>Long-lasting, vibrant colors that enhance your natural beauty</p>
+                    <div class="price">$29.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">✨</div>
+                <div class="product-info">
+                    <h3>Radiant Foundation</h3>
+                    <p>Flawless coverage with a natural, glowing finish</p>
+                    <div class="price">$45.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">👁️</div>
+                <div class="product-info">
+                    <h3>Eye Shadow Palette</h3>
+                    <p>12 stunning shades for every occasion</p>
+                    <div class="price">$39.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">💅</div>
+                <div class="product-info">
+                    <h3>Nail Polish Set</h3>
+                    <p>Chip-resistant formula in trending colors</p>
+                    <div class="price">$24.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🧴</div>
+                <div class="product-info">
+                    <h3>Skincare Bundle</h3>
+                    <p>Complete routine for healthy, glowing skin</p>
+                    <div class="price">$89.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">💋</div>
+                <div class="product-info">
+                    <h3>Makeup Gift Set</h3>
+                    <p>Complete collection for the perfect look</p>
+                    <div class="price">$119.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2 class="section-title">About Pelham</h2>
+            <p>At Pelham, we believe that beauty and fragrance are art forms. Our carefully curated collection features premium cosmetics and an exceptional range of perfumes from budget-friendly to luxury brands. Whether you're seeking an everyday scent or a special occasion fragrance, we have the perfect match for every personality and budget.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Natural Ingredients</h3>
+                    <p>Cruelty-free and eco-friendly products</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Free Shipping</h3>
+                    <p>On orders over $50</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Expert Curation</h3>
+                    <p>Perfumes for every budget & taste</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">💝</div>
+                    <h3>Gift Ready</h3>
+                    <p>Beautiful packaging included</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-info">
+            <p>📧 Email: hello@pelham-cosmetics.com</p>
+            <p>📱 Phone: +1 (555) 123-4567</p>
+            <p>📍 Visit our store or shop online</p>
+            <p>🌸 Perfume consultations available</p>
+        </div>
+        <a href="mailto:hello@pelham-cosmetics.com" class="cta-button" style="margin-top: 2rem;">Contact Us</a>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Pelham Cosmetics & Perfumes. All rights reserved.</p>
+        <p>Elevate Your Beauty, Discover Your Signature Scent.</p>
+    </footer>
+</body>
+</html>
